@@ -23,7 +23,30 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
+    //try to solve using if else chain/refactor
+//i two integers
+//o array of all numbers between integers
+//c what if second parameter larger than first?
+//e n/a
+
+//create empty array
+let arr = [];
+//iterate using for loop, setting i to start and stop at end,
+if(start < end){
+    for(let i = start; i <= end; i++){
+        arr.push(i);
+    }
+}
+if(start > end){
+        for(let i = start; i >= end; i--){
+         arr.push(i);   
+        }
+    }
+
+console.log(arr)
+return arr;
+//conditional for if start is greater than end
+//push current element to empty array
     
     
     

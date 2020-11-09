@@ -13,10 +13,9 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+return function(value){
+    return value > base ? true : false;
+};
     // YOUR CODE ABOVE HERE //
 }
 
@@ -27,7 +26,9 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function(value){
+    return value < base ? true : false;
+};
     
     
     
@@ -41,12 +42,16 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
+ //i string
+ //o boolean
+ //c case sensitivity
+ //e n/a
+return string => startsWith.toLowerCase() === string[0].toLowerCase() ? true : false;
+}    
     
     
     // YOUR CODE ABOVE HERE //
-}
+
 
 /** 
  * Given a endsWith character, which will be a single character, return a 
@@ -55,7 +60,7 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+ return string => endsWith.toLowerCase() === string[string.length - 1].toLowerCase() ? true : false;   
     
     
     
@@ -71,7 +76,7 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+  return strings.map(letter => modify(letter));  
     
     
     
@@ -89,10 +94,10 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
+return strings.filter(element => test(element));
     
     
-    
-    
+
     // YOUR CODE ABOVE HERE //
 }
 

@@ -14,7 +14,7 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+ return Array.isArray(value) ? true : false;
     
     
     
@@ -31,11 +31,9 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
-    // YOUR CODE ABOVE HERE //
+//return Object.prototype.toString.call(value) === '[object Object]';
+//if the value is and object and it is not an array and it is not null and it is not a date...return true, or use the code on line 34
+ return (typeof value === "object" && !Array.isArray(value) && value !== null && !(value instanceof Date));
 }
 
 /** 
@@ -46,7 +44,8 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+
+return Array.isArray(value) || Object.prototype.toString.call(value) === '[object Object]' ? true : false;
     
     
     
@@ -74,10 +73,15 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    if(typeof value === 'string'){return 'string'}
+    if(typeof value === 'number'){return 'number'}
+    if(Array.isArray(value)){return 'array'}
+    if(typeof value === 'boolean'){return 'boolean'}
+    if(typeof value === 'undefined'){return 'undefined'}
+    if(typeof value === 'function'){return 'function'}
+    if(value === null){return 'null'}
+    if(value instanceof Date){return 'date'}
+    if(Object.prototype.toString.call(value)){return 'object'}
     // YOUR CODE ABOVE HERE //
 }
 

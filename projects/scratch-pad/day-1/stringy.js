@@ -58,14 +58,11 @@ return string.toUpperCase();
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
 //seperate sting into array "Hello World" --> ['Hello', 'World']
-let strArr = string.split(' ');
 //re join the string passing '-' through join method
-let newString = strArr.join('-');
-//console.log(newString,'newString here');
-return newString.toLowerCase();
+
+return string.split(' ').join('-').toLowerCase();
 // let regex = / /gi;
 // let str = string.replace(regex, '-');
-// console.log(str);
 // return str.toLowerCase();
     // YOUR CODE ABOVE HERE //
 }
@@ -88,16 +85,9 @@ function beginsWith(string, char) {
 string = string.toLowerCase();
 char = char.toLowerCase();
 //use bracket notation to access first position of string
-//condition = if array position zero equals char
-//return true;
-if(string[0] === char){
-    return true
-  //otherwise return false;
-} else {
-    return false;
-}
-  
-
+//ternary, if character at position 0 of string is equal to char return true, otherwise false
+//
+return string[0] === char ? true : false;
     
 
     // YOUR CODE ABOVE HERE //
@@ -119,11 +109,7 @@ function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
 string = string.toLowerCase();
 char = char.toLowerCase();
-if(string[string.length - 1] === char){
-    return true;
-} else {
-    return false;
-}
+return string[string.length - 1] === char ? true : false;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -135,8 +121,9 @@ if(string[string.length - 1] === char){
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     //solve with the template literals as well;
-    return stringOne + stringTwo;
-
+    return `${stringOne}${stringTwo}`;
+// console.log(`${stringOne}${stringTwo}`, 'template literals working?')
+// return `${stringOne}``${stringTwo}`;
 
 
     // YOUR CODE ABOVE HERE //

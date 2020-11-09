@@ -1,13 +1,29 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>A Website: by Michael Jarrett</title>
-        <style>
-    img  {
-        padding:5px;
-        border:5px solid #021a40;
-    }
-    body {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            /*global $*/
+            const topics = [ 'variables', 'datatypes', 'string-manipulation', 'operators', 'control-flow', 'loops', 'functions' ];
+            const topicElements = topics.forEach(function(topic, index) {
+                const $header = $('<h2>').addClass('topic-heading').text(topic);
+                const $div = $('<div>').addClass('code').attr('id', topic).append($header);
+                $.get(`./studies/${topic}.js`, function (response) {
+                    const split = response.split('\n');
+                    const $splitElements = split.map(function(line, index) {
+                        const $line = $('<div>').addClass('line');
+                        const $lineNumber = $('<div>').addClass('line-number').text(index);
+                        const $content = $('<div>').addClass('line-content').text(line);
+                        return $line.append($lineNumber, $content);
+                    });
+                    $div.append($splitElements);
+                    $div.appendTo('.content');
+                }, 'text'); // 'text' makes sure the JS file isn't executed
+            });
+        </script>
+        <link rel="stylesheet" href="./css/studies.css" type="text/css" />
+        <title>Studies</title>
+        <style>body {
         background: -webkit-linear-gradient(bottom left, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         background: -moz-linear-gradient(bottom left, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         background: -o-linear-gradient(bottom left, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -49,7 +65,7 @@
     nav h1 {
         display: flex;
         align-items: center;
-        color: white;
+        color: black;
         flex: 1;
         margin: 0;
     }
@@ -62,7 +78,7 @@
     }
     nav a {
         text-decoration: none;
-        color: black;
+        color: #fff;
     }
 
     /* main container area beneath menu */
@@ -90,42 +106,24 @@
     }
     h2, h3 {
         margin: 0px;
-    }
-</style>
+    }</style>
     </head>
-    
     <body>
-         <div id="all-contents"> 
-            <nav>
-                <h2> "Michael made a website?" </h2>
-                <ul>
-                    <li>
-                      <a href="index.html"> Home </a>
-                    </li>
-                    <li>
-                      <a href="portfolio.html"> Portfolio </a>
-                    </li>
-                  </ul>
-            </nav>
+        <div id="all-contents">
+        <nav>
+            <header>Michael made a website?</header>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="studies.html">Studies</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content">
+                <h1>Javascript</h1>
 
-            <main>
-                 <div class="sidebar">
-                    <img src="https://i.pinimg.com/originals/1b/0b/7f/1b0b7f8ac4ba1f65ba6c04c753a53721.gif" style="width:300px;height:300px;">
-                 </div>
-
-                 <div class="content">
-                    <h2>Michael Jarrett</h2>
-                    <p>Professional Enabler and student at Operation Spark</p>
-                    <div class="interests">
-                        <h3>Interests</h3>
-                        <ul>
-                            <li>skateboarding</li>
-                            <li>speculation</li>
-                            <li>misanthropia</li>
-                        </ul>
-                    </div>
-                 </div>
-            </main>
-        </div> 
+            </div>
+        </main>
+    </div>
     </body>
 </html>
