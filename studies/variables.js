@@ -141,9 +141,12 @@
  * 
  * Hoisting
  * 
+ * " I think I get it. So it doesn't initialize them as undefined, which is as good as not hoisting it, 
+ * regardless of what's happening behind the scenes." - Michael Kunz
+ * 
  * Hoisting in JavaScript is directly related to scope, and for the most part it simply means
  * 'put on top' or 'raised up to the top'. Hoisting only occurs to variables created using 
- * the var 'keyword' and fuctions defined with the keyword 'function'. Variables delcared 
+ * the var 'keyword' and fuctions defined with the keyword 'function'. Variables declared
  * with let and const are NOT hoisted. You can think of hoisting as a default safety feature
  * or a way of protecting variables because it happens automatically and prevents your code 
  * from throwing an error and crashing your entire program or application.
@@ -154,19 +157,64 @@
  * 
  * 1.) You really shouldn't be using var...but variables defined with var names are hoisted and 
  * variables defined with var outside of global scope are still visible from global scope,
- * unless the variable is assigned inside function scope.
+ * unless the variable is assigned inside function scope. Variables declared with var can
+ * also be redeclared and reassign, which does not necessary hold true for let and const
+ * variables
  * 
- * ex. like class with console.log make in replit and copy and paste
+ * //declaration and assingment of variable ok
+ * var team = 'Saints';
+ * //redeclaratsion and reassignment of variable ok
+ * var team = 'Seahawks';
+ * //assigning variable new value ok
+ * team = 'Cardinals';
+ * console.log(team) // 'Cardinals'
  * 
- * 2.) Variables declared with let and const can not be redeclared, are not hoisted, and are only accesible inside
+ * //declaration and assignment of variable
+ *  var globalVariable = 3;
+ * //declaration of a named function
+ *  function variablePrinter(){
+ * //will log globalVariable to console because var is visible in the lower scope
+ *   console.log(globalVariable)
+ * //declaration and assignment of variable
+ *   var locallyScopedVariable = 5;
+ *  }
+ * 
+ *variablePrinter(globalVariable);//prints 3
+ *  console.log(locallyScopedVariable);//will print a ReferenceError to the console, because
+ * when var is declared inside of a function, it means that variable has function scope, so it
+ * is not available outside of the curly brackets of the function...
+ *  
+ * 2.) Variables declared with let can be reassigned but not redeclared, variables declared
+ * with let are not hoisted, and are only accesible inside
  * the scope in which they were defined.
- *example
+ *
+ * * //declaration and assingment of variable ok
+ * let team = 'Saints';
+ * //redeclaratsion not ok, if we try to reassign team which was declared with let a new value
+ * //we will get a redeclaration error and your program will crash
+ * let team = 'Seahawks';
+ * //assigning variable new value ok
+ * team = 'Cardinals';
+ * console.log(team) // 'Cardinals'
+ 
+ * 
  *
  * 3.) const can not be re-assigned to a new value once it is defined, so it is best practice
  * to use const when defining variables that we know are not going to change or that we do 
- * not want to change.
+ * not want to change. It is also common convention to capitalize your entire variable name
+ * if it is declared and assigned with const...
  * 
- * example 
+ *  * //declaration and assingment of variable ok, note the capitalization
+ * const TEAM = 'Saints';
+ * //redeclaratsion not ok, if we try to reassign team which was declared with const a new value
+ * //we will get a redeclaration error and your program will crash
+ * const TEAM = 'Seahawks';
+ * //assigning variable new value when using const is not allowed either
+ * //we will get an assignement error and your program will crash
+ * TEAM = 'Cardinals';
+ * console.log(team) // 'Cardinals'
+ * 
+ * 
  * 
  * 4.) For now, it is best to get into the practice of declaring all variables at the top of 
  * your code. 
@@ -174,7 +222,5 @@
  * 
  * 
  * 
- * I think I get it. So it doesn't initialize them as undefined, which is as good as not hoisting it, 
- * regardless of what's happening behind the scenes. 
-
+ *
  * */

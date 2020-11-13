@@ -94,7 +94,7 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-return strings.filter(element => test(element));
+return strings.every(element => test(element));
     
     
 
